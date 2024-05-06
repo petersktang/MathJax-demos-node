@@ -31,13 +31,16 @@ load ......  [ '[tex]/mhchem' ]
 - startup defines the necessary tex2svg and tex2svgPromise
 - MathDocument.convert parses the input.
 - Startup.getComponents() [handler is register/unregister] -> Startup.getDocument()
+- getDocument() somehow invokes liteAdaptor:LibteBase:constructor() where LiteParser() and LiteWindow() is attached.
 - Where is LiteParser registered? mathjax-full/ts/adaptors/lite/Parser.ts::LiteParser
 
 ### The liteDOM story/observations
 - node-main -> 'adaptors/liteDOM' -> liteAdaptor -> liteBase
 - MathJax.startup.document is undefined before CONFIG.ready(), and nicely configured post CONFIG.ready()
 
-- in startup.ts: Startup.defaultReady.bind(Startup), and in loader.ts: Loader.defaultReady.bind(Loader), both indirectly setup ready().
+- in startup.ts:293 Startup.defaultReady.bind(Startup), and 
+- in loader.ts:205 Loader.defaultReady.bind(Loader), 
+- both indirectly setup ready().
 
 - loader.ts: export const CONFIG = MathJax.config.loader
 - CONFIG.ready() ==> MathJax.config.loader.ready()
@@ -54,3 +57,7 @@ load ......  [ '[tex]/mhchem' ]
   handler: 'HTMLHandler',
   adaptor: 'liteAdaptor'
 ```
+
+### Debugging howto
+- change only webpack.common.js {"devtool": "inline-source-map"; mode: "development"; optimize:minimize: false}, liteAdaptor.ts:debugger
+- LiteAdaptor.LiteBase, NodeAdaptor, LiteAdaptor, liteAdaptor
