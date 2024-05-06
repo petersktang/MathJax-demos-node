@@ -1,0 +1,7 @@
+\begin{gather}
+\dot{x} = \sigma(y-x) \\
+\dot{y} = \rho x - y - xz \\
+\dot{z} = -\beta z^{a+b}_{d+3} + xy' \\
+\\
+\ce{AgCl2-}
+\end{gather}
