@@ -25,7 +25,6 @@
     "direct:tex2svg:tsc": "npx tsc-watch --onsuccess \"node -r esm direct/tex2svg input.txt output.svg \" ",
     "preload:tex2svg:tsc": "npx tsc-watch --onsuccess \"node -r esm preload/tex2svg input.txt output.svg \" ",
     "tex2svg:tsc": "npx tsc-watch --onsuccess \"node ts/tex2svg.mjs -i input.txt -o output.svg \" ",
-    "tex2svg": "node ts/tex2svg.mjs -i input.txt --output output.svg",
     "tex2svg2:cjs": "node ts/tex2svg2.cjs -i ts/input.txt --output ts/output.svg",
     "tex2svg2:mjs": "node ts/tex2svg2.mjs -i ts/input.txt --output ts/output.svg"
   },
