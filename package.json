@@ -1,10 +1,10 @@
 {
   "name": "MathJax-demos-node",
-  "version": "3.2.0",
-  "description": "Demos using MathJax v3 in node",
+  "version": "4.0.0-beta.6",
+  "description": "Demos using MathJax v4 in node",
   "dependencies": {
     "esm": "^3.2.25",
-    "mathjax-full": "^3.2.0",
+    "mathjax-full": "^4.0.0-beta.6",
     "yargs": "^17.0.1"
   },
   "devDependencies": {
@@ -18,6 +18,16 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mathjax/MathJax-demos-node/"
+  },
+  "scripts": {
+    "component:tex2svg:tsc": "npx tsc-watch --onsuccess \"node -r esm component/tex2svg input.txt output.svg \" ",
+    "simple:tex2svg:tsc": "npx tsc-watch --onsuccess \"node -r esm simple/tex2svg input.txt output.svg \" ",
+    "direct:tex2svg:tsc": "npx tsc-watch --onsuccess \"node -r esm direct/tex2svg input.txt output.svg \" ",
+    "preload:tex2svg:tsc": "npx tsc-watch --onsuccess \"node -r esm preload/tex2svg input.txt output.svg \" ",
+    "tex2svg:tsc": "npx tsc-watch --onsuccess \"node ts/tex2svg.mjs -i input.txt -o output.svg \" ",
+    "tex2svg": "node ts/tex2svg.mjs -i input.txt --output output.svg",
+    "tex2svg2:cjs": "node ts/tex2svg2.cjs -i ts/input.txt --output ts/output.svg",
+    "tex2svg2:mjs": "node ts/tex2svg2.mjs -i ts/input.txt --output ts/output.svg"
   },
   "keywords": [
     "MathJax",
