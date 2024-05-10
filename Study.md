@@ -61,3 +61,20 @@ load ......  [ '[tex]/mhchem' ]
 ### Debugging howto
 - change only webpack.common.js {"devtool": "inline-source-map"; mode: "development"; optimize:minimize: false}, liteAdaptor.ts:debugger
 - LiteAdaptor.LiteBase, NodeAdaptor, LiteAdaptor, liteAdaptor
+- liteAdaptor is exported, and registered into startup:Constructor.
+- {others irrelevant} getComponents()
+- CONFIG.input = ["tex"], class=Tex, 
+- CONFIG.output = "svg", class = SVG, 
+- CONFIG.adaptor = "liteAdaptor", adaptor=function liteAdaptor(optionlist)
+- CONFIG.handler = "HTMLHandler", handlerClass=HTMLHandler
+- getDocument(root is null) -> empty document, options{ InputJax = [Tex], OutputJax = SVG} => HandlerList
+- somehow HandlerList returned HTMLHandler.
+- @HTMLHandler.create(), adaptor=LiteAdaptor parse(doc, 'text/html'), d.create() -> HTMLDocument.
+- parse() seems to me a setup rather than parsing as the document passed in is "EMPTY"
+- LiteBase.parse () -> LiteAdaptor.parser(LiteParser).parseFromString "Parse EMPTY" once.
+- HTMLDocument.convert() -> HTMLMathItem.convert() -> RenderList.renderConvert() -> HTMLMathItem.complle() -> TeX.compile()
+- find, compile, matrics, typeset, update, styles.
+- RenderList.methodActions ..
+- .. MathItem.compile(document)
+
+- MathItem.convert() -> document.renderActions.renderConvert()

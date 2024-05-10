@@ -1,6 +1,6 @@
 const fs = require('node:fs')
 
-export function texRead(fname) {
+function texRead(fname) {
     let texContent = fname
     try {
         fs.accessSync(fname, fs.constants.F_OK)
@@ -17,7 +17,7 @@ function svgWrite(svg, fname) {
         }
     });
 }
-export function svgOutput(MathJax, node, container, styles, css, CSS, outputFile) {
+function svgOutput(MathJax, node, container, styles, css, CSS, outputFile) {
     const adaptor = MathJax.startup.adaptor;
     //
     //  If the --css option was specified, output the CSS,
@@ -31,3 +31,5 @@ export function svgOutput(MathJax, node, container, styles, css, CSS, outputFile
         svgWrite(svg, outputFile)
     };
 }
+exports.texRead = texRead
+exports.svgOutput = svgOutput
