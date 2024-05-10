@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/ts/tex2svg.mjs",
-            "args": ["--input=input.txt", "--output=output.svg"],
+            "args": ["--input=ts/input.txt", "--output=ts/output.svg"],
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ],
